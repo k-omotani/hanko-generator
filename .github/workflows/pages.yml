@@ -37,10 +37,11 @@ jobs:
           key: node_modules-${{ hashFiles('package-lock.json') }}
       - name: Setup Pages
         uses: actions/configure-pages@v1
+      - name: Setup React Script
+        run: npm install react-scripts
       - name: npm ci, build and test
         run: |
           npm ci
-          npm install
           npm run build --if-present
           npm test
       - name: Upload artifact
