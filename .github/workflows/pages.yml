@@ -43,7 +43,6 @@ jobs:
         run: |
           npm ci
           npm run build --if-present
-          npm test
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
 
