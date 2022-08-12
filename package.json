@@ -2,6 +2,7 @@
   "name": "hanko-generator",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://k-omotani.github.io/hanko-generator",
   "dependencies": {
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
