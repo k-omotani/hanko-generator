@@ -1,7 +1,7 @@
 import React from 'react';
 import Preview from './component/Preview';
 
-import { AppBar, Button, Card, CardActions, CardContent, Container, CssBaseline, GlobalStyles, Grid, Paper, Toolbar, Typography } from '@mui/material';
+import { AppBar, Card, CardContent, Container, GlobalStyles, Grid, Toolbar, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 
 function App() {
