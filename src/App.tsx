@@ -1,5 +1,4 @@
 import React from 'react';
-import Preview from './component/Preview';
 
 import { AppBar, Card, CardContent, Container, GlobalStyles, Grid, Toolbar, Typography } from '@mui/material';
 import { Box } from '@mui/system';
