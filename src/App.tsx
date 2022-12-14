@@ -99,7 +99,7 @@ const card = (text: string, angle: number) => (
         alignItems: 'baseline',
         mb: 2,
       }}>
-      <img src={cropCanvas(text, angle).toDataURL()}></img>
+      <img src={cropCanvas(text, angle).toDataURL()} alt="hanko preview"></img>
     </Box>
   </CardContent>
 );
