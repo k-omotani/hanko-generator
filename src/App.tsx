@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
-import { AppBar, Card, CardContent, Container, GlobalStyles, Grid, Slider, TextField, Toolbar, Typography } from '@mui/material';
-import { Box } from '@mui/system';
+import { AppBar, Button, Card, CardContent, Container, GlobalStyles, Grid, Slider, TextField, Toolbar, Typography } from '@mui/material';
+import { Box, Stack } from '@mui/system';
+import { AirlineSeatReclineExtra, Man } from '@mui/icons-material';
 
 export const cropCanvas = (text: string, angle: number): HTMLCanvasElement => {
   const target = document.createElement("canvas");
@@ -65,7 +66,7 @@ function App() {
       </Container>
       <Container maxWidth="md" component="main">
         <Grid container spacing={2}>
-          <Grid xs={12} md={4}>
+          <Grid xs={12} md={6}>
             <Card>{
               input(
                 (n: string) => {
@@ -76,13 +77,8 @@ function App() {
                 }
               )}</Card>
           </Grid>
-          <Grid container xs={12} md={8}>
-            <Grid md={12}>
-              <Card>{card("面谷", 20)}</Card>
-            </Grid>
-            <Grid md={12}>
-              <Card>{card(name, angle)}</Card>
-            </Grid>
+          <Grid xs={12} md={6}>
+            <Card>{card(name, angle)}</Card>
           </Grid>
         </Grid>
       </Container>
@@ -101,8 +97,17 @@ const card = (text: string, angle: number) => (
       }}>
       <img src={cropCanvas(text, angle).toDataURL()} alt="hanko preview"></img>
     </Box>
+    <Button
+      variant="contained"
+      href={cropCanvas(text, angle).toDataURL()}
+      download
+    >画像を保存</Button>
   </CardContent>
 );
+
+const download = (url: string) => {
+
+}
 
 const input = (
   onChangeName: (name: string) => void,
@@ -111,28 +116,38 @@ const input = (
   <CardContent>
     <Box
       sx={{
-        display: 'flex',
         justifyContent: 'center',
         alignItems: 'baseline',
         mb: 2,
       }}>
+      <Typography>
+        角度
+      </Typography>
+      <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
+        <AirlineSeatReclineExtra />
+        <Slider
+          defaultValue={0}
+          aria-label="Default"
+          valueLabelDisplay="auto"
+          min={0}
+          max={90}
+          onChange={(event: React.SyntheticEvent | Event, value: number | Array<number>) => {
+            if (typeof value === "number") {
+              onChangeAngle(-value)
+            }
+          }}
+        />
+        <Man />
+      </Stack>
+      <Typography>
+        名前
+      </Typography>
       <TextField
-        label="山田"
         defaultValue={"山田"}
         multiline
         maxRows={8}
         minRows={4}
         onChange={(event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => { onChangeName(event.target.value) }}
-      />
-      <Slider
-        defaultValue={50}
-        aria-label="Default"
-        valueLabelDisplay="auto"
-        onChange={(event: React.SyntheticEvent | Event, value: number | Array<number>) => {
-          if (typeof value === "number") {
-            onChangeAngle(value)
-          }
-        }}
       />
     </Box>
   </CardContent>
