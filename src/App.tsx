@@ -34,7 +34,6 @@ export const cropCanvas = (text: string, angle: number): HTMLCanvasElement => {
 function App() {
   const [name, setName] = useState("山田");
   const [angle, setAngle] = useState(0);
-  console.log(angle)
   return (
     <React.Fragment>
       <GlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }} />
